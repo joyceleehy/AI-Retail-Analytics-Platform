@@ -37,8 +37,9 @@
 
 ## 🎥 Demo
 
-> 📹 Demo video coming soon — [Try the live app instead](https://ai-retail-analytics-platform-ykxfx2b7gzabgt388ijvpg.streamlit.app/)
+[![Watch Demo](https://img.youtube.com/vi/y6yszHUXM9o/maxresdefault.jpg)](https://youtu.be/y6yszHUXM9o)
 
+> 👆 Click the thumbnail to watch the full demo on YouTube
 ---
 
 ## ⭐ Key Features
