@@ -8,13 +8,6 @@
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-green)](https://scikit-learn.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](https://opensource.org/licenses/MIT)
 
----
-
-## 🌐 Live Demo
-
-👉 **[Launch Live App](https://ai-retail-analytics-platform-ykxfx2b7gzabgt388ijvpg.streamlit.app/)** &nbsp;|&nbsp; 📂 **[View on GitHub](https://github.com/joyceleehy/AI-Retail-Analytics-Platform)**
-
-> App may take 30-60 seconds to wake up on first visit (Streamlit Cloud free tier)
 
 ---
 
@@ -29,11 +22,12 @@
 
 ---
 
-## 🖥️ App Preview
 
-![App Preview](Screenshots/01_executive_dashboard.png)
+## 🌐 Live Demo
 
----
+👉 **[Launch Live App](https://ai-retail-analytics-platform-ykxfx2b7gzabgt388ijvpg.streamlit.app/)** 
+
+> App may take 30-60 seconds to wake up on first visit (Streamlit Cloud free tier)
 
 ## 🎥 Demo
 
