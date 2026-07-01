@@ -2,6 +2,8 @@ import streamlit as st
 import plotly.graph_objects as go
 import plotly.express as px
 import pandas as pd
+import os
+import subprocess
 from modules.kpi_dashboard import load_data, calculate_kpis, generate_ai_summary
 from modules.ai_agent import ask_question
 from modules.forecasting import get_full_forecast
@@ -10,11 +12,16 @@ from modules.root_cause import load_orders_for_rca, get_available_months, analyz
 from modules.recommendations import recommendations_from_rfm, recommendations_from_rca
 from modules.report_generator import generate_excel_report
 
+# Auto-create database if it doesn't exist (e.g. on Streamlit Cloud)
+if not os.path.exists("superstore.db"):
+    subprocess.run(["python", "data_loader.py"], check=True)
+
 st.set_page_config(
     page_title="AI Retail Analytics Platform",
     page_icon="📊",
     layout="wide"
 )
+
 
 st.sidebar.title("📊 Navigation")
 page = st.sidebar.radio(
