@@ -8,7 +8,6 @@
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-green)](https://scikit-learn.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](https://opensource.org/licenses/MIT)
 
-
 ---
 
 ## ⚡ Quick Summary
@@ -31,6 +30,7 @@
 
 ## 🎥 Demo
 
+---
 [![Watch Demo](https://img.youtube.com/vi/y6yszHUXM9o/maxresdefault.jpg)](https://youtu.be/y6yszHUXM9o)
 
 > 👆 Click the thumbnail to watch the full demo on YouTube
@@ -250,8 +250,9 @@ pip install -r requirements.txt
 
 ### 3. Set up environment variables
 Create a `.env` file in the root folder:
-
+```
 GROQ_API_KEY=your_groq_api_key_here
+```
 Get a free Groq API key at: https://console.groq.com
 
 ### 4. Load the database
