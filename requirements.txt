@@ -1,0 +1,11 @@
+streamlit
+pandas
+plotly
+groq
+langchain
+langchain-groq
+langchain-community
+scikit-learn
+openpyxl
+python-dotenv
+fpdf2
