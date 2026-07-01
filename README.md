@@ -335,9 +335,12 @@ ai-retail-analytics/
 
 ---
 
-## 🔗 Connect
+# Author
 
-**Joyce Lee** | Data & BI Analyst | PL-300 Certified
+**Joyce Lee**
 
-- GitHub: [joyceleehy](https://github.com/joyceleehy)
-- LinkedIn: [linkedin.com/in/joyce-lee-how-yee](https://linkedin.com/in/joyce-lee-how-yee)
+**Data Analyst | Power BI | SQL | Python | PL-300 Certified**
+
+- LinkedIn: https://www.linkedin.com/in/joyceleehy
+- GitHub: https://github.com/joyceleehy
+- [More Projects](https://github.com/joyceleehy)
