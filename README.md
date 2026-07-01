@@ -304,8 +304,6 @@ ai-retail-analytics/
 
 **Joyce Lee** | Data & BI Analyst | PL-300 Certified
 
-With 10 years of experience in HR and People Analytics, I'm passionate about building analytics tools that go beyond reporting — turning data into decisions.
-
 - 🔗 LinkedIn: [linkedin.com/in/joyceleehy](https://linkedin.com/in/joyceleehy)
 - 💻 GitHub: [github.com/joyceleehy](https://github.com/joyceleehy)
 - 📊 More Projects: [github.com/joyceleehy](https://github.com/joyceleehy)
