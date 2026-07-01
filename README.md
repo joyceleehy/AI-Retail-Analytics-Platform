@@ -185,7 +185,7 @@ This project reflects how I think about analytics: as a tool for driving decisio
 ---
 
 ## 🤖 How the AI Agent Works
-
+```
 User Question
 ↓
 Prompt Engineering (Table schema injected into every prompt)
@@ -199,7 +199,7 @@ SQLite Execution
 Pandas DataFrame
 ↓
 AI Business Insight
-
+```
 Injecting the full table schema into every prompt is the key to accuracy — without it, the LLM guesses column names and generates broken queries. Schema injection keeps SQL generation stable and reliable.
 
 ---
