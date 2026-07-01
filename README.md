@@ -1,4 +1,3 @@
-markdown
 # 🛒 AI-Powered Retail Analytics Platform
 
 > **Transforming raw sales data into actionable business intelligence** — featuring a natural language SQL agent, sales forecasting, customer segmentation, root cause analysis, AI recommendations, and one-click Excel reporting.
@@ -8,6 +7,14 @@ markdown
 [![Groq](https://img.shields.io/badge/Groq-LLM-orange)](https://groq.com)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-ML-green)](https://scikit-learn.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](https://opensource.org/licenses/MIT)
+
+---
+
+## 🌐 Live Demo
+
+👉 **[Launch Live App](https://ai-retail-analytics-platform-ykxfx2b7gzabgt388ijvpg.streamlit.app/)**
+
+> App may take 30-60 seconds to wake up on first visit (Streamlit Cloud free tier)
 
 ---
 
@@ -24,7 +31,15 @@ markdown
 
 ## 🎯 Why I Built This
 
-Most portfolio projects stop at "here's a chart of sales by region." I wanted to build something that mirrors what a real BI platform does — not just describing what happened, but explaining why, predicting what's next, and recommending what to do about it.
+Most dashboards stop at describing what happened — leaving business teams to figure out the "why" and "what next" on their own.
+
+I built this platform to show what modern business intelligence looks like when you combine traditional analytics with AI:
+
+- Not just "revenue dropped" — but **which category, region, or segment caused it**
+- Not just "here are your customers" — but **which ones are at risk of leaving and what they're worth**
+- Not just "here's last quarter" — but **what next quarter looks like and what to do about it**
+
+This project reflects how I think about analytics: as a tool for driving decisions, not just reporting numbers.
 
 This project covers the **full analytical cycle**:
 
@@ -37,173 +52,105 @@ This project covers the **full analytical cycle**:
 | What should we do? | AI Recommendation Engine |
 
 ---
-## 🌐 Live Demo
-
-👉 **[Launch Live App](https://ai-retail-analytics-platform-ykxfx2b7gzabgt388ijvpg.streamlit.app/)**
-
-> App may take 30-60 seconds to wake up on first visit (Streamlit Cloud free tier)
-
----
 
 ## 📊 Project Metrics
-📦 9,994 orders analyzed            👥 793 customers segmented
-🧩 7 analytics modules              🤖 3 AI-powered features
-🗄️ 1 SQLite database                📥 1-click Excel report (4 sheets)
-📈 3-month sales forecast           🔍 Natural language → SQL pipeline
-
----
-
-## 🏗️ Architecture
 
 ```
-superstore.csv
-    ↓
-data_loader.py (Pandas)
-    ↓
-superstore.db (SQLite)
-    ↓
-┌────────────────────────────────────────┐
-│         Analytics Modules              │
-│ KPI · Agent · Forecast · RFM · RCA     │
-│ Recommendations · Report Generator     │
-└────────────────────────────────────────┘
-    ↓                     ↓
-Groq LLM              Plotly Charts
-(AI Insights)         (Visualization)
-    ↓                     ↓
-└──────── Streamlit Dashboard ──────────┘
-    ↓
-Excel Report (.xlsx)
+📦 9,994 orders analyzed          👥 793 customers segmented
+🧩 7 analytics modules             🤖 3 AI-powered features
+🗄️ 1 SQLite database               📥 1-click Excel report (4 sheets)
+📈 3-month sales forecast          🔍 Natural language → SQL pipeline
 ```
 
 ---
 
-## 🤖 AI Workflow (Natural Language → SQL → Insight)
-
-**User Question**  
-> "Which region has the highest profit?"
-
----
-
-**Prompt Engineering (Schema Injection)**  
-↓
-
-**Groq LLM (llama-3.1-8b-instant)**  
-↓
-
-**SQL Generation**
-```sql
-SELECT Region, SUM(Profit)
-FROM orders
-GROUP BY Region
-ORDER BY SUM(Profit) DESC;
-```
-
-↓
-
-**SQLite Execution**  
-↓
-
-**Pandas DataFrame**  
-↓
-
-**AI Insight Generation**  
-↓
-
-> "West region leads with $108,418 in profit"
-
----
-
-## 🔑 Key Design Decision
-
-Injecting the full table schema into every prompt was the most important improvement.
-
-### Without it:
-- LLM guesses column names ❌  
-- SQL breaks ❌  
-
-### With it:
-- Accurate SQL generation ✅  
-- Stable query execution ✅    
----
-
-## 🚀 Modules
+## 📸 Screenshots
 
 ### Executive Dashboard
 ![Executive Dashboard](Screenshots/01_executive_dashboard.png)
 
-### 📊 Module 0: Executive Dashboard
-**Business Problem:** Leadership needs a single-screen view of business health without digging through raw data.
-
-**Solution:** Auto-calculated KPI scorecards (Revenue, Profit, YoY Growth, Active Customers, AOV) with a revenue trend chart and an AI-generated executive summary.
-
-**Business Impact:** Reduces time-to-insight for leadership from hours to seconds. AI summary surfaces the most important trend in plain English automatically.
-
----
-
 ### AI Insights Agent
 ![AI Insights Agent](Screenshots/02_ai_insights_agent.png)
 
-### 🤖 Module 1: AI Insights Agent
-**Business Problem:** Analysts spend significant time writing ad-hoc SQL queries to answer one-off business questions.
-
-**Solution:** Natural language interface that converts plain English questions to SQL, executes them against the database, and returns AI-written business insights with supporting data.
-
-**Business Impact:** Democratises data access — non-technical stakeholders can query data directly without SQL knowledge.
-
----
 ### Sales Forecasting
 ![Sales Forecasting](Screenshots/03_sales_forecasting.png)
-
-### 📈 Module 2: Sales Forecasting + Scenario Simulator
-**Business Problem:** Planning teams need revenue projections for budgeting, and need to model "what if" assumptions before committing to targets.
-
-**Solution:** Linear Regression model trained on 48 months of historical data to predict next 3 months revenue, with interactive sliders for sales growth and retention improvement scenarios.
-
-**Why Linear Regression?** Chosen deliberately as a lightweight, interpretable baseline model. The overall upward trend in the data (20.4% YoY growth) is well-captured by a linear trend line. It is designed to be swappable with Prophet or XGBoost in a future version for seasonality-aware forecasting.
-
-**Business Impact:** Gives planning teams a data-backed baseline forecast with instant scenario modeling — no Excel macros needed.
-
----
 
 ### Customer Segmentation
 ![Customer Segmentation](Screenshots/04_customer_segmentation.png)
 
-### 👥 Module 3: Customer Segmentation (RFM + CLV)
-**Business Problem:** Marketing teams treat all customers the same, wasting budget on low-value customers while under-investing in high-value ones.
-
-**Solution:** RFM scoring (Recency, Frequency, Monetary) segments all 793 customers into Champion, Loyal, At Risk, Lost, and Needs Attention groups. Customer Lifetime Value (CLV) extends this by estimating long-term revenue per customer.
-
-**Business Impact:** At Risk customers have nearly identical average CLV ($4,219) to Champions ($4,330) — identifying them as a priority retention target with significant recoverable revenue potential.
-
----
 ### Root Cause Analysis
 ![Root Cause Analysis](Screenshots/05_root_cause_analysis.png)
 
+---
+
+## 🚀 Modules
+
+### 📊 Module 0: Executive Dashboard
+**Business Problem:** Leadership needs a single-screen view of business health without digging through raw data.
+
+**Solution:** Auto-calculated KPI scorecards (Revenue, Profit, YoY Growth, Active Customers, Average Order Value) with a revenue trend chart and an AI-generated executive summary.
+
+**Business Impact:** Reduces time-to-insight for leadership from hours to seconds. The AI summary surfaces the most important business trend in plain English automatically on load.
+
+---
+
+### 🤖 Module 1: AI Insights Agent
+**Business Problem:** Analysts spend significant time writing ad-hoc SQL queries to answer one-off business questions from stakeholders.
+
+**Solution:** A natural language interface that converts plain English questions to SQL, runs them against the database, and returns AI-written business insights with supporting data tables. Sample question buttons make demos effortless.
+
+**Business Impact:** Democratises data access — non-technical stakeholders can get answers directly without waiting for an analyst to write a query.
+
+---
+
+### 📈 Module 2: Sales Forecasting + Scenario Simulator
+**Business Problem:** Planning teams need revenue projections for budgeting, and need to test assumptions before committing to targets.
+
+**Solution:** A forecasting model trained on 48 months of historical data predicts the next 3 months of revenue. Interactive "what if" sliders let users model scenarios like "what if sales grow by 20%?" and instantly see the impact on the forecast.
+
+**Business Impact:** Gives planning teams a data-backed baseline forecast with instant scenario modeling — no manual Excel work required.
+
+---
+
+### 👥 Module 3: Customer Segmentation (RFM + CLV)
+**Business Problem:** Marketing teams often treat all customers the same, wasting budget on low-value customers while under-investing in high-value ones.
+
+**Solution:** Every customer is scored on Recency (how recently they bought), Frequency (how often they buy), and Monetary value (how much they spend). This segments all 793 customers into Champion, Loyal, At Risk, Lost, and Needs Attention groups. Customer Lifetime Value (CLV) adds a long-term revenue estimate per customer.
+
+**Business Impact:** At Risk customers have nearly identical average CLV ($4,219) to Champions ($4,330) — making them a high-priority retention target with significant recoverable revenue potential.
+
+---
+
 ### 🔍 Module 4: Root Cause Analysis
-**Business Problem:** When revenue changes, it's rarely obvious which product category, region, or customer segment caused the shift.
+**Business Problem:** When revenue changes month-to-month, it's rarely obvious which product category, region, or customer segment caused the shift.
 
-**Solution:** Period-over-period comparison tool that automatically breaks down changes in Revenue, Profit, or Orders across Category, Region, and Segment dimensions — with color-coded charts (red = decline, green = growth).
+**Solution:** A period-over-period comparison tool that automatically breaks down changes in Revenue, Profit, or Orders across Category, Region, and Segment dimensions. Color-coded charts make it instantly clear what's growing (green) and what's declining (red).
 
-**Business Impact:** Turns "revenue dropped 15% last month" from a vague concern into a specific, actionable finding: "Office Supplies in the Central region drove 68% of the decline."
+**Business Impact:** Turns "revenue dropped 15% last month" from a vague concern into a specific, actionable finding — with the exact category and region driving the change identified in seconds.
 
 ---
 
 ### 💡 Module 5: AI Recommendation Engine
-**Business Problem:** Analysts produce data findings but struggle to translate them into concrete business actions for non-technical stakeholders.
+**Business Problem:** Data findings often stay in dashboards and don't translate into concrete actions for business teams.
 
-**Solution:** After each analysis (RFM, Root Cause), a Groq-powered engine reads the actual data summary and generates 3-4 specific, numbered recommendations referencing real numbers from the dataset.
+**Solution:** After each analysis (RFM segmentation or Root Cause), a Groq-powered AI engine reads the actual results and generates 3-4 specific, numbered business recommendations — referencing real numbers from the data, not generic advice.
 
-**Business Impact:** Bridges the gap between analysis and action — recommendations are grounded in data, not generic best practices.
+**Business Impact:** Bridges the gap between analysis and action, giving business teams clear next steps grounded in their own data.
 
 ---
 
 ### 📥 Module 6: Auto Report Generator
 **Business Problem:** Compiling analysis results into a shareable report is time-consuming and prone to copy-paste errors.
 
-**Solution:** One-click Excel workbook with 4 styled sheets: Executive Summary, Customer Segmentation, Sales Forecast, and Root Cause Analysis (auto-included if run in session).
+**Solution:** One click generates a formatted Excel workbook with 4 sheets: Executive Summary (KPIs), Customer Segmentation, Sales Forecast, and Root Cause Analysis (automatically included if run during the session).
 
-**Business Impact:** Stakeholders get a clean, formatted, shareable report in seconds — no manual Excel work required.
+**Business Impact:** Stakeholders get a clean, professional, shareable report in seconds — ready for a business review meeting.
+
+---
+
+## 🤖 How the AI Agent Works
+
+The AI Insights Agent accepts questions in plain English, automatically converts them to SQL using Groq's LLM, runs the query against the Superstore database, and returns a human-readable business insight with a supporting data table. No SQL knowledge required from the user — and sample question buttons make it easy to demo instantly.
 
 ---
 
@@ -233,60 +180,23 @@ Injecting the full table schema into every prompt was the most important improve
 
 ---
 
-## 🔧 Technical Challenges Solved
-
-**1. Preventing SQL hallucinations**
-Injecting the full table schema (column names, types, relationships) into every LLM prompt was critical. Without this, the model guesses column names and generates broken queries. Schema injection dropped SQL errors to near-zero.
-
-**2. Streamlit session state management**
-Streamlit reruns the entire script on every interaction. Managing state across multiple button clicks (e.g. sample questions pre-filling the text input, RCA results persisting for report generation) required careful use of `st.session_state`.
-
-**3. Modular architecture**
-Each analytics module is a standalone Python file with a single main function that returns a clean dictionary. This makes each module independently testable (see `tests/` folder) and easy to extend without breaking other modules.
-
-**4. Dynamic Excel reporting**
-The report generator uses `io.BytesIO()` to build the Excel file in memory rather than writing to disk — the standard pattern for Streamlit download buttons. Handling `MergedCell` objects in `openpyxl` required a custom column-width calculation function.
-
-**5. Interactive forecasting**
-The scenario simulator applies multipliers to forecast outputs in real time as sliders move — giving instant visual feedback without re-running the ML model on every interaction.
-
----
-
 ## 📈 Project Highlights
 
 - ✅ Built a **complete prescriptive analytics platform** covering all 4 levels of analytics: descriptive, diagnostic, predictive, and prescriptive
-- ✅ Implemented a **natural language to SQL pipeline** that correctly handles complex aggregation queries using prompt engineering
-- ✅ Designed a **modular architecture** where every module is independently testable and the full app is wired together in a single `app.py`
-- ✅ Identified that **At Risk customers ($4,219 avg CLV)** represent nearly as much value as Champions — a non-obvious business insight from the RFM analysis
+- ✅ Implemented a **natural language to SQL pipeline** that lets non-technical users query data in plain English
+- ✅ Discovered that **At Risk customers ($4,219 avg CLV)** represent nearly the same value as Champions — making retention a higher business priority than acquisition
 - ✅ Built an **AI recommendation engine** that generates specific, number-backed business actions — not generic advice
 - ✅ Delivered a **one-click Excel report** combining 4 modules into a polished, stakeholder-ready document
+- ✅ Deployed as a **live interactive web app** accessible without any local setup
 
 ---
 
-## 🔮 Future Enhancements
+## 💡 Business Insights from the Data
 
-- [ ] **Advanced forecasting** — swap Linear Regression for Facebook Prophet or XGBoost to capture seasonality
-- [ ] **Cloud deployment** — deploy to Streamlit Cloud or AWS for live demo access
-- [ ] **Database upgrade** — migrate from SQLite to PostgreSQL or Snowflake for production scale
-- [ ] **Authentication** — add user login so different stakeholders see role-appropriate data
-- [ ] **Scheduled reporting** — automate weekly Excel report generation and email delivery
-- [ ] **Docker** — containerise the app for consistent deployment across environments
-- [ ] **CI/CD pipeline** — add GitHub Actions for automated testing on every push
-
----
-
-## 🔑 Key Learnings
-
-**Technical:**
-- Prompt engineering quality directly determines LLM output quality — schema injection is non-negotiable for SQL generation
-- Streamlit's rerun model requires session state for anything that needs to persist across button clicks
-- `io.BytesIO()` is the correct pattern for in-memory file generation in Streamlit
-- Linear Regression is a strong, explainable baseline for trend forecasting on relatively clean time series data
-
-**Business:**
-- The most valuable customers aren't always the most obvious ones — At Risk customers with high CLV are a more urgent priority than growing the Lost segment
-- Prescriptive analytics ("what should we do?") is significantly more valuable to stakeholders than descriptive analytics ("what happened?")
-- Root cause analysis framing ("which category drove the decline?") is more actionable than top-line metric reporting
+- **At Risk customers** ($4,219 avg CLV) are nearly as valuable as Champions ($4,330) — meaning a targeted retention campaign has higher ROI than acquiring new customers
+- **Consumer segment** drives ~62% of total sales — but Corporate customers have higher average order values, suggesting a different pricing or upsell strategy for each segment
+- **Technology sales spike in November and December** — consistent with holiday demand, making Q4 inventory and staffing planning critical
+- **20.4% YoY revenue growth** in the final year signals strong business momentum, but with only 793 active customers, growth is concentrated in a relatively small base
 
 ---
 
@@ -305,6 +215,7 @@ pip install -r requirements.txt
 
 ### 3. Set up environment variables
 Create a `.env` file in the root folder:
+
 GROQ_API_KEY=your_groq_api_key_here
 Get a free Groq API key at: https://console.groq.com
 
@@ -335,15 +246,14 @@ ai-retail-analytics/
 ├── modules/
 │   ├── kpi_dashboard.py       # Module 0: Executive KPIs + AI summary
 │   ├── ai_agent.py            # Module 1: NL → SQL → Insight
-│   ├── forecasting.py         # Module 2: Linear Regression forecast
-│   ├── rfm.py                 # Module 3: RFM scoring + CLV
-│   ├── root_cause.py          # Module 4: Period comparison + breakdown
-│   ├── recommendations.py     # Module 5: AI recommendations
-│   └── report_generator.py    # Module 6: Excel report builder
+│   ├── forecasting.py         # Module 2: Sales Forecasting
+│   ├── rfm.py                 # Module 3: RFM + CLV Segmentation
+│   ├── root_cause.py          # Module 4: Root Cause Analysis
+│   ├── recommendations.py     # Module 5: AI Recommendations
+│   └── report_generator.py    # Module 6: Excel Report Generator
 │
 └── tests/                     # Standalone test scripts for each module
 ```
-
 ---
 
 ## 📊 Dataset
@@ -355,12 +265,14 @@ ai-retail-analytics/
 
 ---
 
-# Author
+## 👩‍💼 Author
 
-**Joyce Lee**
+**Joyce Lee** | Data & BI Analyst | PL-300 Certified
 
-**Data Analyst | Power BI | SQL | Python | PL-300 Certified**
+With 10 years of experience in HR and People Analytics, I'm passionate about building analytics tools that go beyond reporting — turning data into decisions.
 
-- LinkedIn: https://www.linkedin.com/in/joyceleehy
-- GitHub: https://github.com/joyceleehy
-- [More Projects](https://github.com/joyceleehy)
+- 🔗 LinkedIn: [linkedin.com/in/joyceleehy](https://linkedin.com/in/joyceleehy)
+- 💻 GitHub: [github.com/joyceleehy](https://github.com/joyceleehy)
+- 📊 More Projects: [github.com/joyceleehy](https://github.com/joyceleehy)
+
+  
