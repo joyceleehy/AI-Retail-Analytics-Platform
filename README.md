@@ -37,12 +37,19 @@ This project covers the **full analytical cycle**:
 | What should we do? | AI Recommendation Engine |
 
 ---
+## 🌐 Live Demo
+
+👉 **[Launch Live App](https://ai-retail-analytics-platform-ykxfx2b7gzabgt388ijvpg.streamlit.app/)**
+
+> App may take 30-60 seconds to wake up on first visit (Streamlit Cloud free tier)
+
+---
 
 ## 📊 Project Metrics
-📦 9,994 orders analyzed          👥 793 customers segmented
-🧩 7 analytics modules             🤖 3 AI-powered features
-🗄️ 1 SQLite database               📥 1-click Excel report (4 sheets)
-📈 3-month sales forecast          🔍 Natural language → SQL pipeline
+📦 9,994 orders analyzed            👥 793 customers segmented
+🧩 7 analytics modules              🤖 3 AI-powered features
+🗄️ 1 SQLite database                📥 1-click Excel report (4 sheets)
+📈 3-month sales forecast           🔍 Natural language → SQL pipeline
 
 ---
 
@@ -122,6 +129,9 @@ Injecting the full table schema into every prompt was the most important improve
 
 ## 🚀 Modules
 
+### Executive Dashboard
+![Executive Dashboard](Screenshots/01_executive_dashboard.png)
+
 ### 📊 Module 0: Executive Dashboard
 **Business Problem:** Leadership needs a single-screen view of business health without digging through raw data.
 
@@ -131,6 +141,9 @@ Injecting the full table schema into every prompt was the most important improve
 
 ---
 
+### AI Insights Agent
+![AI Insights Agent](Screenshots/02_ai_insights_agent.png)
+
 ### 🤖 Module 1: AI Insights Agent
 **Business Problem:** Analysts spend significant time writing ad-hoc SQL queries to answer one-off business questions.
 
@@ -139,6 +152,8 @@ Injecting the full table schema into every prompt was the most important improve
 **Business Impact:** Democratises data access — non-technical stakeholders can query data directly without SQL knowledge.
 
 ---
+### Sales Forecasting
+![Sales Forecasting](Screenshots/03_sales_forecasting.png)
 
 ### 📈 Module 2: Sales Forecasting + Scenario Simulator
 **Business Problem:** Planning teams need revenue projections for budgeting, and need to model "what if" assumptions before committing to targets.
@@ -151,6 +166,9 @@ Injecting the full table schema into every prompt was the most important improve
 
 ---
 
+### Customer Segmentation
+![Customer Segmentation](Screenshots/04_customer_segmentation.png)
+
 ### 👥 Module 3: Customer Segmentation (RFM + CLV)
 **Business Problem:** Marketing teams treat all customers the same, wasting budget on low-value customers while under-investing in high-value ones.
 
@@ -159,6 +177,8 @@ Injecting the full table schema into every prompt was the most important improve
 **Business Impact:** At Risk customers have nearly identical average CLV ($4,219) to Champions ($4,330) — identifying them as a priority retention target with significant recoverable revenue potential.
 
 ---
+### Root Cause Analysis
+![Root Cause Analysis](Screenshots/05_root_cause_analysis.png)
 
 ### 🔍 Module 4: Root Cause Analysis
 **Business Problem:** When revenue changes, it's rarely obvious which product category, region, or customer segment caused the shift.
