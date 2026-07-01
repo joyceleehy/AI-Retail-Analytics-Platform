@@ -47,47 +47,77 @@ This project covers the **full analytical cycle**:
 ---
 
 ## 🏗️ Architecture
+
+```
 superstore.csv
-↓
+    ↓
 data_loader.py (Pandas)
-↓
+    ↓
 superstore.db (SQLite)
-↓
+    ↓
 ┌────────────────────────────────────────┐
 │         Analytics Modules              │
-│  KPI · Agent · Forecast · RFM · RCA   │
-│  Recommendations · Report Generator   │
+│ KPI · Agent · Forecast · RFM · RCA     │
+│ Recommendations · Report Generator     │
 └────────────────────────────────────────┘
-↓                    ↓
+    ↓                     ↓
 Groq LLM              Plotly Charts
-(AI Insights)         (Visualisation)
-↓                    ↓
+(AI Insights)         (Visualization)
+    ↓                     ↓
 └──────── Streamlit Dashboard ──────────┘
-↓
+    ↓
 Excel Report (.xlsx)
+```
 
 ---
 
 ## 🤖 AI Workflow (Natural Language → SQL → Insight)
-User types: "Which region has the highest profit?"
-↓
-Prompt Engineering
-(Table schema injected into prompt)
-↓
-Groq LLM (llama-3.1-8b-instant)
-↓
-SQL Generated:
-SELECT Region, SUM(Profit) FROM orders GROUP BY Region ORDER BY SUM(Profit) DESC
-↓
-SQLite executes query
-↓
-Pandas DataFrame returned
-↓
-Groq LLM writes business insight:
-"The West region leads with $108,418 in profit..."
 
-**Key design decision:** Injecting the full table schema into every prompt was the single most important factor in preventing SQL hallucinations. Without it, the LLM guesses column names and generates broken queries.
+**User Question**  
+> "Which region has the highest profit?"
 
+---
+
+**Prompt Engineering (Schema Injection)**  
+↓
+
+**Groq LLM (llama-3.1-8b-instant)**  
+↓
+
+**SQL Generation**
+```sql
+SELECT Region, SUM(Profit)
+FROM orders
+GROUP BY Region
+ORDER BY SUM(Profit) DESC;
+```
+
+↓
+
+**SQLite Execution**  
+↓
+
+**Pandas DataFrame**  
+↓
+
+**AI Insight Generation**  
+↓
+
+> "West region leads with $108,418 in profit"
+
+---
+
+## 🔑 Key Design Decision
+
+Injecting the full table schema into every prompt was the most important improvement.
+
+### Without it:
+- LLM guesses column names ❌  
+- SQL breaks ❌  
+
+### With it:
+- Accurate SQL generation ✅  
+- Stable query execution ✅    
 ---
 
 ## 🚀 Modules
@@ -272,25 +302,27 @@ python -m streamlit run app.py
 
 ## 📁 Project Structure
 
+```
 ai-retail-analytics/
 │
-├── app.py                   # Streamlit entry point, all module navigation
-├── data_loader.py           # CSV → SQLite pipeline (run once)
+├── app.py                     # Streamlit entry point, module navigation
+├── data_loader.py             # CSV → SQLite pipeline (run once)
 ├── requirements.txt
 │
 ├── data/
-│   └── superstore.csv       # Kaggle Superstore Sales dataset
+│   └── superstore.csv         # Kaggle Superstore Sales dataset
 │
 ├── modules/
-│   ├── kpi_dashboard.py     # Module 0: Executive KPIs + AI summary
-│   ├── ai_agent.py          # Module 1: NL → SQL → Insight
-│   ├── forecasting.py       # Module 2: Linear Regression forecast
-│   ├── rfm.py               # Module 3: RFM scoring + CLV
-│   ├── root_cause.py        # Module 4: Period comparison + breakdown
-│   ├── recommendations.py   # Module 5: AI recommendations
-│   └── report_generator.py  # Module 6: Excel report builder
+│   ├── kpi_dashboard.py       # Module 0: Executive KPIs + AI summary
+│   ├── ai_agent.py            # Module 1: NL → SQL → Insight
+│   ├── forecasting.py         # Module 2: Linear Regression forecast
+│   ├── rfm.py                 # Module 3: RFM scoring + CLV
+│   ├── root_cause.py          # Module 4: Period comparison + breakdown
+│   ├── recommendations.py     # Module 5: AI recommendations
+│   └── report_generator.py    # Module 6: Excel report builder
 │
-└── tests/                   # Standalone test scripts for each module
+└── tests/                     # Standalone test scripts for each module
+```
 
 ---
 
@@ -303,9 +335,12 @@ ai-retail-analytics/
 
 ---
 
-## 🔗 Connect
+# Author
 
-**Joyce Lee** | Data & BI Analyst | PL-300 Certified
+**Joyce Lee**
 
-- GitHub: [joyceleehy](https://github.com/joyceleehy)
-- LinkedIn: [linkedin.com/in/joyce-lee-how-yee](https://linkedin.com/in/joyce-lee-how-yee)
+**Data Analyst | Power BI | SQL | Python | PL-300 Certified**
+
+- LinkedIn: https://www.linkedin.com/in/joyceleehy
+- GitHub: https://github.com/joyceleehy
+- [More Projects](https://github.com/joyceleehy)
